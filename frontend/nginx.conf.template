@@ -12,11 +12,12 @@ server {
 
     # Proxy /api/* to the backend container, stripping the /api prefix
     location /api/ {
-        proxy_pass https://script-bridge-backend.up.railway.app/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_read_timeout 300s;   # Whisper can take time for long audio
-        proxy_send_timeout 300s;
-        client_max_body_size 200M;
-    }
+    proxy_pass https://script-bridge-backend.up.railway.app/;
+    proxy_ssl_server_name on;
+    proxy_set_header Host script-bridge-backend.up.railway.app;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_read_timeout 300s;
+    proxy_send_timeout 300s;
+    client_max_body_size 200M;
+}
 }
