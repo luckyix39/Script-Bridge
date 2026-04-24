@@ -90,7 +90,7 @@ export default function App() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>ScriptBridge</h1>
+        <h1 className={styles.title}>Peace Together</h1>
         <p className={styles.subtitle}>
           Phonetics, historical documents, and handwriting — decoded
         </p>
