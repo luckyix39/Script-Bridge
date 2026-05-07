@@ -137,7 +137,7 @@ export default function App() {
         )}
       </main>
       <footer className={styles.footer}>
-        <p>Please note: This project is a work in progress.</p>
+        <p>Please note: This project is under construction.</p>
       </footer>
     </div>
   )
