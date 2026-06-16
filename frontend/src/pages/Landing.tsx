@@ -25,10 +25,7 @@ export default function Landing({ onNavigate }: Props) {
       <section className={styles.section}>
         <h2 className={styles.h}>The Problem</h2>
         <p>
-          In order to reveal ultimate truths of humanity, we are racing against
-          time to review and analyze mountains of documentation related to
-          millions of individuals whose stories comprise the events described as
-          the Holocaust.
+           Although general Holocaust events and locations are well-documented, many specific individual stories still remain buried under mountains of confusing documentation written in several different languages.
         </p>
       </section>
 
