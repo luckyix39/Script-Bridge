@@ -8,7 +8,21 @@ Peace Together was built out of an interest in language and mathematics — in h
 
 ## What It Does
 
-Peace Together takes spoken audio, typed text, or a photo of a historical document and helps you understand how a name sounds and how it might be spelled across languages:
+Peace Together offers two complementary approaches to Holocaust and WWII family-history research, reached from a landing page and a top-level navigation.
+
+### Approach One — Narrative Guidance to Holocaust Databases
+
+Describe a relative in plain language and an AI research assistant (powered by [Claude](https://www.anthropic.com/claude)) helps you find and search the right Holocaust archives:
+
+- **Conversational intake** — asks one or two focused clarifying questions when you've given little to go on (name and spelling variants, places lived, approximate dates, known fate)
+- **Honest, tagged findings** — every statement is marked `confirmed` (an actual record or established fact), `inferred` (historically likely but not a found record), `next_step` (a concrete place to look), or `historical` (general WWII/Holocaust context). The assistant never fabricates records and never invents precise convoy, transport, document, or prisoner numbers
+- **Personal + historical timeline** — interleaves the person's life events with the historical events that shaped them, each linked to relevant archives
+- **Curated archive routing** — points you to specific trusted archives (Yad Vashem, Arolsen, USHMM, EHRI, JewishGen, Mémorial de la Shoah, and more), listing free archives first, with help on shifting Central/Eastern European place names and borders
+- **Private by design** — nothing is stored server-side; download your session as JSON to resume later, or export a PDF report
+
+### Approach Two — Language Parsing
+
+Takes spoken audio, typed text, or a photo of a historical document and helps you understand how a name sounds and how it might be spelled across languages:
 
 - **IPA transcription** — converts speech or text to the International Phonetic Alphabet, a universal notation for pronunciation
 - **Spelling variants** — shows how a name or word would be written across dozens of languages and writing systems, powered by Claude AI
@@ -17,11 +31,17 @@ Peace Together takes spoken audio, typed text, or a photo of a historical docume
 
 ## How It Works
 
+**Language Parsing:**
+
 1. Audio is sent to a FastAPI backend
 2. [OpenAI Whisper](https://github.com/openai/whisper) transcribes the speech and detects the language
 3. [phonemizer](https://github.com/bootphon/phonemizer) (via espeak-ng) converts the text to IPA
 4. For spelling variants and document analysis, [Claude](https://www.anthropic.com/claude) (Haiku and Opus) generates results
 5. Results are displayed side by side in the browser
+
+**Narrative Guidance:**
+
+The full conversation is sent to the `/research` endpoint each turn (nothing is persisted server-side). Claude (`claude-sonnet-4-6`) is given the curated archive list, region/theme routing, and a seed timeline, then returns either a clarifying question or structured findings — a narrative, a tagged timeline, and archive pointers — which the browser renders and can export to PDF.
 
 ## Prerequisites
 
@@ -47,7 +67,7 @@ Then open **http://localhost** in your browser.
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `ANTHROPIC_API_KEY` | Yes | Powers spelling variants, document reader, and Sütterlin decoder |
+| `ANTHROPIC_API_KEY` | Yes | Powers Narrative Guidance, spelling variants, document reader, and Sütterlin decoder |
 | `WHISPER_MODEL` | No | Whisper model size (default: `small`) |
 
 ## Switching Whisper Models
@@ -124,15 +144,22 @@ Script-Bridge/
 │   ├── spellings_service.py          # Claude-powered spelling variants
 │   ├── document_analysis_service.py  # Claude document OCR + translation
 │   ├── sutterlin_service.py          # Claude Sütterlin decoder
+│   ├── narrative_service.py          # Claude research orchestration (Narrative Guidance)
+│   ├── narrative_data.py             # Loads curated archives / routing / timeline
 │   ├── data/
 │   │   ├── its_glossary.json         # 4,327 ITS archive glossary entries
-│   │   └── sutterlin_chart.png       # Reference chart for letter forms
+│   │   ├── sutterlin_chart.png       # Reference chart for letter forms
+│   │   ├── archives.json             # 15 curated Holocaust archives
+│   │   ├── routing.json              # Region/theme → archive routing
+│   │   └── timeline.json             # 29 key historical events (1933–1952)
 │   └── Dockerfile
 ├── frontend/
 │   ├── src/
 │   │   ├── App.tsx
 │   │   ├── types.ts
 │   │   ├── pages/
+│   │   │   ├── Landing.tsx           # Mission + two-approach landing page
+│   │   │   ├── NarrativeGuidance.tsx # Research chat, findings, PDF, save/resume
 │   │   │   ├── DocumentReader.tsx
 │   │   │   └── SuttterlinReader.tsx
 │   │   └── components/
@@ -156,5 +183,6 @@ Script-Bridge/
 | `/spellings/alternatives` | POST | Spelling variants for a specific language |
 | `/analyze-document` | POST | Image → transcription + translation + document analysis |
 | `/decode-sutterlin` | POST | Image → decoded Sütterlin text |
+| `/research` | POST | Conversation → clarifying question or structured research findings (Narrative Guidance) |
 | `/health` | GET | Liveness check + model load status |
 | `/languages` | GET | List of supported languages |
