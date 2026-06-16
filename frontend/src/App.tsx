@@ -8,6 +8,8 @@ import Nav from './components/Nav'
 import type { Page } from './components/Nav'
 import DocumentReader from './pages/DocumentReader'
 import SuttterlinReader from './pages/SuttterlinReader'
+import Landing from './pages/Landing'
+import NarrativeGuidance from './pages/NarrativeGuidance'
 import styles from './App.module.css'
 
 const initialState: AppState = {
@@ -34,7 +36,7 @@ function reducer(state: AppState, action: AppAction): AppState {
 }
 
 export default function App() {
-  const [page, setPage] = useState<Page>('ipa')
+  const [page, setPage] = useState<Page>('home')
   const [state, dispatch] = useReducer(reducer, initialState)
 
   async function processFile(file: File) {
@@ -92,14 +94,18 @@ export default function App() {
       <header className={styles.header}>
         <h1 className={styles.title}>Peace Together</h1>
         <p className={styles.subtitle}>
-          Phonetics, historical documents, and handwriting — decoded
+          Harnessing AI to weave each individual story of the Holocaust
         </p>
       </header>
 
       <main className={styles.main}>
         <Nav activePage={page} onNavigate={setPage} />
 
-        {page === 'document' ? (
+        {page === 'home' ? (
+          <Landing onNavigate={setPage} />
+        ) : page === 'narrative' ? (
+          <NarrativeGuidance />
+        ) : page === 'document' ? (
           <DocumentReader />
         ) : page === 'sutterlin' ? (
           <SuttterlinReader />

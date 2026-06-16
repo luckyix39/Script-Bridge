@@ -1,0 +1,208 @@
+{
+  "comment": "Curated seed of key Holocaust / WWII events. Claude matches a person's known places and dates against these to weave historical context into the timeline and suggest relevant archives. Seeded in part from the Mémorial de la Shoah key-dates resource. This is a starting set and is meant to be expanded.",
+  "events": [
+    {
+      "date": "1933-01-30",
+      "location": "Germany",
+      "title": "Hitler appointed Chancellor",
+      "description": "Adolf Hitler becomes Chancellor of Germany; the Nazi regime begins.",
+      "archives": ["bundesarchiv", "ushmm_collections"]
+    },
+    {
+      "date": "1933-1939",
+      "location": "Germany / Central Europe",
+      "title": "Jewish emigration before the war",
+      "description": "As persecution intensified, roughly half of Germany's Jews emigrated. Many sought refuge in France, Britain, Palestine, and the Americas — leaving immigration, visa, and naturalization records abroad.",
+      "archives": ["familysearch", "ushmm_collections", "arolsen"]
+    },
+    {
+      "date": "1935-09-15",
+      "location": "Germany",
+      "title": "Nuremberg Race Laws",
+      "description": "Laws stripping German Jews of citizenship and prohibiting marriage with non-Jews.",
+      "archives": ["bundesarchiv", "ushmm_collections"]
+    },
+    {
+      "date": "1938-11-09",
+      "location": "Germany / Austria",
+      "title": "Kristallnacht ('Night of Broken Glass')",
+      "description": "Coordinated pogrom against Jews; synagogues burned, businesses destroyed, ~30,000 Jewish men arrested and sent to camps.",
+      "archives": ["arolsen", "yad_vashem", "ushmm_collections"]
+    },
+    {
+      "date": "1938-1939",
+      "location": "Germany / Austria → United Kingdom",
+      "title": "Kindertransport",
+      "description": "Britain admitted roughly 10,000 mostly Jewish children from Germany, Austria, and Czechoslovakia in the months before the war. A common path by which a family line survived — leaving UK arrival and refugee records.",
+      "archives": ["ushmm_collections", "arolsen", "familysearch"]
+    },
+    {
+      "date": "1939-05-13",
+      "location": "Atlantic / Hamburg",
+      "title": "Voyage of the MS St. Louis",
+      "description": "A ship of over 900 Jewish refugees was turned away from Cuba and the US and forced back to Europe — emblematic of the closing of refuge before the war.",
+      "archives": ["ushmm_collections", "arolsen"]
+    },
+    {
+      "date": "1939-09-01",
+      "location": "Poland",
+      "title": "Germany invades Poland — WWII begins",
+      "description": "The invasion of Poland begins the Second World War in Europe and the persecution of Polish Jewry.",
+      "archives": ["jri_poland", "jewishgen", "ehri", "yad_vashem"]
+    },
+    {
+      "date": "1940-05-10",
+      "location": "Western Europe",
+      "title": "Germany invades France and the Low Countries",
+      "description": "Invasion of France, Belgium, the Netherlands, and Luxembourg.",
+      "archives": ["memorial_shoah", "joods_monument", "ehri"]
+    },
+    {
+      "date": "1940-05-20",
+      "location": "Auschwitz, Poland",
+      "title": "Auschwitz concentration camp established",
+      "description": "The Auschwitz camp opens; it would grow into the largest Nazi camp complex and a center of mass murder.",
+      "archives": ["auschwitz_memorial", "arolsen", "yad_vashem"]
+    },
+    {
+      "date": "1940-06-22",
+      "location": "France",
+      "title": "Fall of France; Vichy regime established",
+      "description": "France signs an armistice; the collaborationist Vichy government soon enacts anti-Jewish laws.",
+      "archives": ["memorial_shoah", "ehri"]
+    },
+    {
+      "date": "1940-11-15",
+      "location": "Warsaw, Poland",
+      "title": "Warsaw Ghetto sealed",
+      "description": "The largest ghetto in occupied Europe is sealed off; Łódź and other ghettos were established around this period.",
+      "archives": ["yad_vashem", "jewishgen", "ehri"]
+    },
+    {
+      "date": "1941-06-22",
+      "location": "Soviet Union",
+      "title": "Operation Barbarossa",
+      "description": "Germany invades the USSR; mass shootings of Jews by Einsatzgruppen begin in occupied Soviet territories.",
+      "archives": ["jewishgen", "yad_vashem", "ehri"]
+    },
+    {
+      "date": "1941-08-20",
+      "location": "Drancy, France",
+      "title": "Drancy internment camp opens",
+      "description": "Drancy becomes the main transit camp for Jews deported from France; ~63,000 of the ~76,000 Jews deported from France passed through it, mostly to Auschwitz.",
+      "archives": ["memorial_shoah", "yad_vashem"]
+    },
+    {
+      "date": "1941-08-27",
+      "location": "Kamianets-Podilskyi, Ukraine",
+      "title": "Kamenets-Podolsk massacre",
+      "description": "About 23,600 Jews were murdered, including many deported from Hungarian-held territory — an early instance of mass killing tied to Hungary's expulsion of 'foreign' Jews.",
+      "archives": ["yad_vashem", "jewishgen", "ehri"]
+    },
+    {
+      "date": "1941-1944",
+      "location": "Hungary",
+      "title": "Hungarian forced labor service (Munkaszolgálat)",
+      "description": "Before the 1944 deportations, tens of thousands of Hungarian Jewish men were conscripted into often deadly military labor battalions, many sent to the Eastern Front. A key fate for Hungarian Jewish men in this period.",
+      "archives": ["yad_vashem", "ehri", "jewishgen"]
+    },
+    {
+      "date": "1941-1942",
+      "location": "Transnistria (Romania-occupied Ukraine)",
+      "title": "Deportations to Transnistria",
+      "description": "Romania deported Jews from Bessarabia, Bukovina, and elsewhere to camps and ghettos in Transnistria, where mass death from shootings, starvation, and disease followed.",
+      "archives": ["yad_vashem", "ehri", "jewishgen"]
+    },
+    {
+      "date": "1941-09-29",
+      "location": "Babi Yar, Kyiv",
+      "title": "Babi Yar massacre",
+      "description": "Nearly 34,000 Jews of Kyiv were murdered over two days — among the largest single massacres of the Holocaust by shooting.",
+      "archives": ["jewishgen", "yad_vashem", "ehri"]
+    },
+    {
+      "date": "1941-11-24",
+      "location": "Theresienstadt (Terezín), Czechoslovakia",
+      "title": "Theresienstadt ghetto-camp established",
+      "description": "A walled garrison town used as a ghetto and transit camp, especially for Czech, German, and Austrian Jews, the elderly, and prominent figures. Most held there were later deported on to Auschwitz and other killing centers.",
+      "archives": ["yad_vashem", "arolsen", "ehri"]
+    },
+    {
+      "date": "1942-01-20",
+      "location": "Wannsee, Berlin",
+      "title": "Wannsee Conference",
+      "description": "Senior Nazi officials coordinate the 'Final Solution' — the systematic murder of European Jews.",
+      "archives": ["ushmm_collections", "bundesarchiv"]
+    },
+    {
+      "date": "1942-03-17",
+      "location": "Occupied Poland",
+      "title": "Operation Reinhard begins (Bełżec, Sobibór, Treblinka)",
+      "description": "The dedicated killing centers of Operation Reinhard begin operating, murdering most of Poland's Jews during 1942.",
+      "archives": ["yad_vashem", "arolsen", "ehri"]
+    },
+    {
+      "date": "1942-03-27",
+      "location": "France → Auschwitz",
+      "title": "First deportation convoy from France to Auschwitz",
+      "description": "The first major deportation convoy leaves France (via Drancy/Compiègne) for Auschwitz.",
+      "archives": ["memorial_shoah", "yad_vashem", "auschwitz_memorial"]
+    },
+    {
+      "date": "1942-07-16",
+      "location": "Paris, France",
+      "title": "Vél' d'Hiv Roundup",
+      "description": "French police arrest more than 13,000 Jews in Paris and hold them at the Vélodrome d'Hiver before deportation via Drancy.",
+      "archives": ["memorial_shoah", "yad_vashem"]
+    },
+    {
+      "date": "1943-04-19",
+      "location": "Warsaw, Poland",
+      "title": "Warsaw Ghetto Uprising",
+      "description": "Armed Jewish resistance against deportations from the Warsaw Ghetto.",
+      "archives": ["jri_poland", "jewishgen", "yad_vashem", "ehri"]
+    },
+    {
+      "date": "1943-09-08",
+      "location": "Italy",
+      "title": "German occupation of Italy",
+      "description": "After Italy's armistice with the Allies, Germany occupied the north and center. Systematic deportation of Italian Jews began — before this date, persecution was severe but deportations were limited. A crucial turning point for Italian cases.",
+      "archives": ["cdec", "yad_vashem", "ehri"]
+    },
+    {
+      "date": "1944-05-15",
+      "location": "Hungary",
+      "title": "Mass deportation of Hungarian Jews",
+      "description": "Within about two months, roughly 440,000 Hungarian Jews are deported, mostly to Auschwitz.",
+      "archives": ["yad_vashem", "auschwitz_memorial", "arolsen", "ehri"]
+    },
+    {
+      "date": "1944-1945",
+      "location": "Occupied Europe",
+      "title": "Death marches",
+      "description": "As the front lines closed in, the SS forced prisoners on brutal winter marches away from camps near the front; many died en route.",
+      "archives": ["arolsen", "yad_vashem"]
+    },
+    {
+      "date": "1945-01-27",
+      "location": "Auschwitz, Poland",
+      "title": "Liberation of Auschwitz",
+      "description": "Soviet forces liberate Auschwitz-Birkenau.",
+      "archives": ["auschwitz_memorial", "arolsen", "yad_vashem"]
+    },
+    {
+      "date": "1945-05-08",
+      "location": "Europe",
+      "title": "Victory in Europe (VE Day)",
+      "description": "Germany surrenders; the war in Europe ends. Survivors begin tracing relatives and the displaced-persons period begins.",
+      "archives": ["arolsen", "ushmm_collections"]
+    },
+    {
+      "date": "1945-1952",
+      "location": "Germany / Austria / Italy",
+      "title": "Displaced Persons camps and emigration",
+      "description": "Survivors lived in DP camps while seeking to emigrate, many to Israel (especially after 1948) or the United States. This period generated rich tracing, registration, and immigration records.",
+      "archives": ["arolsen", "familysearch", "ushmm_collections"]
+    }
+  ]
+}

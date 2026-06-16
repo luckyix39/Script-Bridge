@@ -1,3 +1,9 @@
+.navWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .nav {
   display: flex;
   gap: 4px;
@@ -11,8 +17,9 @@
 .tab {
   flex: 1;
   padding: 10px 24px;
-  border-radius: calc(var(--radius) - 2px);
-  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-muted);
   background: transparent;
@@ -27,4 +34,23 @@
 .tab.active {
   background: var(--accent);
   color: #fff;
+}
+
+/* Second-level tabs (the three Language Parsing tools) */
+.subnav {
+  background: transparent;
+  border: none;
+  padding: 0 4px;
+}
+
+.subnav .tab {
+  font-size: 0.85rem;
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+}
+
+.subnav .tab.active {
+  background: var(--surface-hover);
+  color: var(--accent);
+  border-color: var(--accent);
 }

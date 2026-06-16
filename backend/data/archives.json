@@ -1,0 +1,140 @@
+{
+  "archives": [
+    {
+      "id": "yad_vashem",
+      "name": "Yad Vashem — Central Database of Shoah Victims' Names",
+      "url": "https://yvng.yadvashem.org/",
+      "country": "Israel / global",
+      "cost": "free",
+      "covers": "The central names database of Shoah victims. Pages of Testimony, deportation lists, and victim records from across Europe.",
+      "best_for": ["victim names", "pages of testimony", "deportation records", "general first stop"]
+    },
+    {
+      "id": "arolsen",
+      "name": "Arolsen Archives",
+      "url": "https://arolsen-archives.org/en/search-explore/",
+      "country": "Germany / global",
+      "cost": "free",
+      "covers": "The world's largest collection of documents on Nazi persecution: concentration camp records, forced labor, displaced persons, and tracing documents.",
+      "best_for": ["concentration camps", "forced labor", "displaced persons", "tracing documents", "post-war fate"]
+    },
+    {
+      "id": "ushmm_collections",
+      "name": "USHMM Collections Search",
+      "url": "https://collections.ushmm.org/search/",
+      "country": "United States / global",
+      "cost": "free",
+      "covers": "United States Holocaust Memorial Museum collections: documents, photographs, oral histories, and survivor/victim records.",
+      "best_for": ["oral histories", "photographs", "survivor testimony", "broad document search"]
+    },
+    {
+      "id": "ehri",
+      "name": "EHRI Portal",
+      "url": "https://portal.ehri-project.eu/",
+      "country": "Europe (federated)",
+      "cost": "free",
+      "covers": "European Holocaust Research Infrastructure — federates descriptions of Holocaust archival material held by hundreds of institutions across Europe.",
+      "best_for": ["cross-country cases", "finding which institution holds records", "scattered or pan-European research"]
+    },
+    {
+      "id": "jewishgen",
+      "name": "JewishGen",
+      "url": "https://www.jewishgen.org/",
+      "country": "global",
+      "cost": "free",
+      "covers": "Major Jewish genealogy hub: the Holocaust Database, KehilaLinks town pages, the Family Finder, and the Communities Database for connecting people, towns, and living descendants.",
+      "best_for": ["general first stop", "connecting descendants", "town-level research", "Holocaust Database", "Eastern Europe genealogy"]
+    },
+    {
+      "id": "jewishgen_gazetteer",
+      "name": "JewishGen Gazetteer & Communities Database",
+      "url": "https://www.jewishgen.org/Communities/",
+      "country": "Central & Eastern Europe",
+      "cost": "free",
+      "covers": "Identifies towns and shtetls in Central and Eastern Europe across changing spellings, languages, and national borders. Resolves which country a town belonged to in different periods.",
+      "best_for": ["place-name disambiguation", "shifting borders", "spelling variants", "finding the modern town and country"]
+    },
+    {
+      "id": "familysearch",
+      "name": "FamilySearch",
+      "url": "https://www.familysearch.org/search/",
+      "country": "global",
+      "cost": "free",
+      "covers": "Free genealogy platform run by the LDS Church with vast vital, census, immigration, and naturalization records worldwide.",
+      "best_for": ["vital records", "census", "immigration", "naturalization", "free alternative to Ancestry"]
+    },
+    {
+      "id": "yizkor",
+      "name": "Yizkor Books (NYPL Digital Collections)",
+      "url": "https://www.nypl.org/research/collections/shared-collection-catalog/hunt/yizkor",
+      "country": "global",
+      "cost": "free",
+      "covers": "Memorial books written by survivors commemorating destroyed Jewish communities — rich town-level history, names, and photographs.",
+      "best_for": ["destroyed communities", "town-level context", "survivor-written history", "names and photographs"]
+    },
+    {
+      "id": "auschwitz_memorial",
+      "name": "Auschwitz-Birkenau Memorial — Prisoner Database",
+      "url": "https://www.auschwitz.org/en/museum/auschwitz-prisoners/",
+      "country": "Poland",
+      "cost": "free",
+      "covers": "Records and information on prisoners of the Auschwitz-Birkenau camp complex.",
+      "best_for": ["Auschwitz prisoners", "camp records", "confirming a fate at Auschwitz"]
+    },
+    {
+      "id": "memorial_shoah",
+      "name": "Mémorial de la Shoah",
+      "url": "https://www.memorialdelashoah.org/",
+      "country": "France",
+      "cost": "free",
+      "covers": "France's principal Holocaust archive and memorial. Deportation records, Drancy detention records, and documentation of the Shoah in France.",
+      "best_for": ["France", "Drancy", "deportation convoys from France", "French Jewish community records"]
+    },
+    {
+      "id": "jri_poland",
+      "name": "JRI-Poland (Jewish Records Indexing — Poland)",
+      "url": "https://jri-poland.org/",
+      "country": "Poland",
+      "cost": "free",
+      "covers": "Index of Jewish vital records (births, marriages, deaths) from territories of present and former Poland.",
+      "best_for": ["Poland", "vital records", "pre-war genealogy", "town-level Jewish records"]
+    },
+    {
+      "id": "bundesarchiv",
+      "name": "German Federal Archives (Bundesarchiv) — Gedenkbuch",
+      "url": "https://www.bundesarchiv.de/gedenkbuch/",
+      "country": "Germany",
+      "cost": "free",
+      "covers": "German federal memorial book (Gedenkbuch) of Jewish victims from Germany, plus broader federal records.",
+      "best_for": ["Germany", "German Jewish victims", "Gedenkbuch memorial book", "official German records"]
+    },
+    {
+      "id": "joods_monument",
+      "name": "Joods Monument (Jewish Monument, Netherlands)",
+      "url": "https://www.joodsmonument.nl/en/",
+      "country": "Netherlands",
+      "cost": "free",
+      "covers": "Commemorates Dutch Jews persecuted during the Holocaust, with biographical records and family links.",
+      "best_for": ["Netherlands", "Dutch Jewish victims", "family connections"]
+    },
+    {
+      "id": "cdec",
+      "name": "CDEC — Fondazione Centro di Documentazione Ebraica Contemporanea",
+      "url": "https://www.cdec.it/",
+      "country": "Italy",
+      "cost": "free",
+      "covers": "Italy's principal archive documenting the persecution and deportation of Italian Jews, including a database of victims.",
+      "best_for": ["Italy", "Italian Jewish victims", "deportation from Italy"]
+    },
+    {
+      "id": "ancestry",
+      "name": "Ancestry / MyHeritage",
+      "url": "https://www.ancestry.com/",
+      "country": "global (secondary)",
+      "cost": "paid",
+      "covers": "Commercial genealogy platforms with immigration, census, naturalization, and ship manifest records. Useful but paywalled — prefer FamilySearch first.",
+      "best_for": ["immigration", "census", "ship manifests", "naturalization", "emigration after the war"],
+      "secondary": true
+    }
+  ]
+}

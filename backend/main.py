@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydub import AudioSegment
 
 import document_analysis_service
+import narrative_service
 import phonemizer_service
 import spellings_service
 import sutterlin_service
@@ -190,6 +191,29 @@ async def analyze_document(file: UploadFile = File(...)):
         raise HTTPException(status_code=503, detail=str(exc))
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}")
+
+
+class Message(BaseModel):
+    role: str
+    content: str
+
+
+class ResearchRequest(BaseModel):
+    messages: list[Message]
+    allow_broad_search: bool = False
+
+
+@app.post("/research")
+async def research(req: ResearchRequest):
+    if not req.messages:
+        raise HTTPException(status_code=422, detail="messages is required.")
+    conversation = [{"role": m.role, "content": m.content} for m in req.messages]
+    try:
+        return narrative_service.run_turn(conversation, req.allow_broad_search)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Research failed: {exc}")
 
 
 @app.post("/decode-sutterlin")

@@ -1,0 +1,37 @@
+{
+  "comment": "Geographic and topical routing: maps a region or theme to the archives most likely to help. Used to make archive suggestions deterministic rather than relying only on search. Free archives are listed before paid ones.",
+  "by_region": {
+    "France": ["memorial_shoah", "ehri", "yad_vashem", "arolsen"],
+    "Poland": ["jri_poland", "jewishgen", "ehri", "yad_vashem", "arolsen"],
+    "Germany": ["bundesarchiv", "arolsen", "yad_vashem", "ehri"],
+    "Austria": ["arolsen", "ehri", "yad_vashem"],
+    "Netherlands": ["joods_monument", "ehri", "arolsen", "yad_vashem"],
+    "Belgium": ["ehri", "arolsen", "yad_vashem"],
+    "Italy": ["cdec", "ehri", "yad_vashem"],
+    "Greece": ["ehri", "yad_vashem", "jewishgen"],
+    "Hungary": ["ehri", "yad_vashem", "jewishgen", "arolsen"],
+    "Czechoslovakia": ["ehri", "yad_vashem", "jewishgen", "arolsen"],
+    "Romania": ["ehri", "yad_vashem", "jewishgen"],
+    "Lithuania": ["jewishgen", "ehri", "yad_vashem", "jri_poland"],
+    "Latvia": ["jewishgen", "ehri", "yad_vashem"],
+    "Ukraine": ["jewishgen", "ehri", "yad_vashem"],
+    "Belarus": ["jewishgen", "ehri", "yad_vashem"],
+    "Soviet Union": ["jewishgen", "ehri", "yad_vashem"],
+    "default": ["yad_vashem", "jewishgen", "arolsen", "ehri", "ushmm_collections"]
+  },
+  "by_theme": {
+    "concentration_camp": ["arolsen", "yad_vashem", "ushmm_collections"],
+    "auschwitz": ["auschwitz_memorial", "arolsen", "yad_vashem"],
+    "deportation": ["yad_vashem", "memorial_shoah", "arolsen"],
+    "detention_drancy": ["memorial_shoah", "yad_vashem"],
+    "forced_labor": ["arolsen", "ushmm_collections"],
+    "ghetto": ["yad_vashem", "jewishgen", "ehri"],
+    "destroyed_community": ["yizkor", "jewishgen", "yad_vashem"],
+    "displaced_persons_postwar": ["arolsen", "ushmm_collections", "familysearch"],
+    "survivor_tracing": ["arolsen", "familysearch", "jewishgen", "ushmm_collections"],
+    "emigration_immigration": ["familysearch", "ushmm_collections", "ancestry"],
+    "vital_records_prewar": ["jri_poland", "jewishgen", "familysearch", "ehri"],
+    "place_name_disambiguation": ["jewishgen_gazetteer", "jewishgen", "ehri"],
+    "connecting_descendants": ["jewishgen", "familysearch"]
+  }
+}
