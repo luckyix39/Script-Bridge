@@ -25,14 +25,18 @@ export default function Landing({ onNavigate }: Props) {
       <section className={styles.section}>
         <h2 className={styles.h}>The Problem</h2>
         <p>
-           Although general Holocaust events and locations are well-documented, many specific individual stories still remain buried under mountains of confusing documentation written in several different languages.
+           Although general Holocaust events and locations are well-documented, 
+          still many specific individual stories remain buried underneath mountains of 
+          confusing documentation systems, sometimes written in different languages,
+          which leaves heirs and historians without closure and without specific 
+          truths.   
         </p>
       </section>
 
       <section className={styles.section}>
         <h2 className={styles.h}>The Solution</h2>
         <p>
-          PT expedites research by offering information with actionable next
+          PT uses Ai to parse and expedite research by offering information with actionable next
           steps. In this way, PT helps any researcher (even those without
           historical knowledge) to find and to execute focused research within
           historical Holocaust databases.
