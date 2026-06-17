@@ -347,11 +347,12 @@ export default function NarrativeGuidance() {
 
       <section className={styles.intro}>
         <p>
-          Step 1) Please provide any information about the person you would like to learn about. Include whatever you
+          To use this tool please provide any information about the person you would like to learn about. Include whatever you
           might know such as their name, any spelling variations, when and where they were born, places they
-          lived, and what you know of their fate. 
-          Step 2) Based upon the information provided, the assistant will provide Holocaust-related historical context and related 
-          Holocaust databases to help you search for specific records.
+          lived, and what you know of their fate.  </p>
+           <p>Then, based upon the information provided, the ai-assistant will provide a hypothetical narrative 
+             explaining how you can search Holocaust-related 
+            databases to help you search for specific records.
         </p>
         <p className={styles.privacyNote}>
           <strong>We store nothing.</strong> Nothing you type is saved on our servers.
