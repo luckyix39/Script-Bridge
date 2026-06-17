@@ -19,19 +19,19 @@ export default function Landing({ onNavigate }: Props) {
           Peace Together (PT) aims to assist heirs and 
           any researcher (even those without historical knowledge) 
           to find and to execute focused research within historical 
-          Holocaust databases.
+          Holocaust databases. There is no charge to use the Peace Together tools.
         </p>
       </section>
 
       <section className={styles.section}>
         <h2 className={styles.h}>The Problem</h2>
         <p>
-           Although general Holocaust events and locations are 
-          well-documented, details about many specific individuals 
+           It is a race against time to answer important lingering questions about Holocaust victims as survivors with firsthand 
+          knowledge are reaching their final years. Although general events and locations are 
+          well-documented, details about specific individuals 
           remains buried underneath mountains of confusing documentation systems, 
-          sometimes written in different languages, which leaves many important questions unanswered. 
-          Further, it is a race against time to answer these important lingering questions as Holocaust survivors with firsthand 
-          knowledge are reaching their final years.
+          sometimes written in different languages, which leaves too many significant questions unanswered. 
+        
    
         </p>
       </section>
@@ -41,8 +41,7 @@ export default function Landing({ onNavigate }: Props) {
         <p>
           Peace Together harnesses artificial intelligence to weave and parse through the mountain of 
           documentation in order to expedite focused research 
-          and provide actionable next steps.
-        </p>
+          and provide actionable next steps towards finding detailed answers.         </p>
         <p className={styles.subtle}>
           Peace Together offers two main search approaches — choose one to begin:
         </p>
@@ -58,30 +57,30 @@ export default function Landing({ onNavigate }: Props) {
             Narrative Guidance to Holocaust Databases
           </span>
           <span className={styles.cardBody}>
-            Ai-Assisted Narrative Guidance to Holocaust Databases speeds-up focused research by:
+            The Ai-Assisted Narrative Guidance to Holocaust Databases speeds-up focused research. It is completely free to use. To use the tool you:
            i) First, you type any information you might know about an individual research subject 
-            ii) Then, based upon that information, the Ai assistant provides a hypothetical narrative with links to databases to guide your focused research
+            ii) Then, based upon that information, the Ai-assistant provides a hypothetical narrative with links to databases to guide your focused research
             step-by-step through the major Holocaust databases. 
             
           </span>
-          <span className={styles.cardCta}>Start researching with Narrative Guidance to Holocaust Databases</span>
+          <span className={styles.cardCta}>Click this button to take you to the page with the Narrative Guidance to Holocaust Databases tool</span>
         </button>
 
         <button className={styles.card} onClick={() => onNavigate('ipa')}>
           <span className={styles.cardNum}>Approach Two</span>
           <span className={styles.cardTitle}>Language Parsing</span>
           <span className={styles.cardBody}>
-            Language Parsing provides translating, transcribing, analyzing and
+            The Language Parsing tools speeds up comprehension and opens
+            new areas of research. It is completely free to use. The tools provide translating, transcribing, analyzing and
             expansion options specific to common Holocaust-related languages —
-            especially Sütterlin script. This speeds up comprehension and opens
-            new areas of research. Three services:
+            especially Sütterlin script. There are three Language Parsing services:
           </span>
           <span className={styles.cardList}>
             <span>i. Audio to IPA (International Phonetic Alphabet)</span>
             <span>ii. Document Reader</span>
             <span>iii. Sütterlin Script Translation</span>
           </span>
-          <span className={styles.cardCta}>Start researching with Language Parsing</span>
+          <span className={styles.cardCta}>Click this button to take you to the page with the Language Parsing tools</span>
         </button>
       </div>
 
