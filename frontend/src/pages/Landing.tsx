@@ -41,7 +41,7 @@ export default function Landing({ onNavigate }: Props) {
         <p>
           Peace Together harnesses artificial intelligence to weave and parse through the mountain of 
           documentation in order to expedite focused research 
-          and provide actionable next steps towards finding detailed answers.         </p>
+          and provide actionable next steps towards finding detailed answers. Peace Together tools are completely free of charge.         </p>
         <p className={styles.subtle}>
           Peace Together offers two main search approaches — choose one to begin:
         </p>
@@ -57,7 +57,7 @@ export default function Landing({ onNavigate }: Props) {
             Narrative Guidance to Holocaust Databases
           </span>
           <span className={styles.cardBody}>
-            The Ai-Assisted Narrative Guidance to Holocaust Databases speeds-up focused research. It is completely free to use. To use the tool you:
+            The Ai-Assisted Narrative Guidance to Holocaust Databases tool speeds-up focused research. It is completely free to use. To use the tool you:
            i) First, you type any information you might know about an individual research subject 
             ii) Then, based upon that information, the Ai-assistant provides a hypothetical narrative with links to databases to guide your focused research
             step-by-step through the major Holocaust databases. 
