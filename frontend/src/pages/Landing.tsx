@@ -9,8 +9,7 @@ export default function Landing({ onNavigate }: Props) {
   return (
     <div className={styles.landing}>
       <p className={styles.lede}>
-        Harnessing the speed &amp; power of AI to weave each individual story
-        depicting the Holocaust.
+        This site is under construction.
       </p>
 
       <section className={styles.section}>

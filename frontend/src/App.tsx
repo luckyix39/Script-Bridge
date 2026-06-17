@@ -92,9 +92,19 @@ export default function App() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Peace Together</h1>
+        <h1 className={styles.title}>
+          <button
+            type="button"
+            className={styles.titleBtn}
+            onClick={() => setPage('home')}
+            aria-label="Peace Together — return home"
+          >
+            Peace Together
+          </button>
+        </h1>
         <p className={styles.subtitle}>
-          Harnessing AI to weave each individual story of the Holocaust
+          Harnessing the speed &amp; power of AI to weave each individual story
+          depicting the Holocaust.
         </p>
       </header>
 
@@ -142,9 +152,6 @@ export default function App() {
           </>
         )}
       </main>
-      <footer className={styles.footer}>
-        <p>Please note: This project is under construction.</p>
-      </footer>
     </div>
   )
 }

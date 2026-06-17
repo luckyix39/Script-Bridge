@@ -10,30 +10,16 @@ interface Props {
 }
 
 export default function Nav({ activePage, onNavigate }: Props) {
+  // No navigation chrome on the landing page.
+  if (activePage === 'home') return null
+
   const inLanguage = LANGUAGE_PAGES.includes(activePage)
 
   return (
     <div className={styles.navWrap}>
-      <nav className={styles.nav}>
-        <button
-          className={`${styles.tab} ${activePage === 'home' ? styles.active : ''}`}
-          onClick={() => onNavigate('home')}
-        >
-          Home
-        </button>
-        <button
-          className={`${styles.tab} ${activePage === 'narrative' ? styles.active : ''}`}
-          onClick={() => onNavigate('narrative')}
-        >
-          Narrative Guidance
-        </button>
-        <button
-          className={`${styles.tab} ${inLanguage ? styles.active : ''}`}
-          onClick={() => onNavigate('ipa')}
-        >
-          Language Parsing
-        </button>
-      </nav>
+      <button className={styles.back} onClick={() => onNavigate('home')}>
+        ← Back
+      </button>
 
       {inLanguage && (
         <nav className={`${styles.nav} ${styles.subnav}`}>

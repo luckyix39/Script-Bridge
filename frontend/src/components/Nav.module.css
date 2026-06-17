@@ -1,7 +1,26 @@
 .navWrap {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+}
+
+/* "← Back" link to the landing page */
+.back {
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--next);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.back:hover {
+  color: var(--text);
+  text-decoration: underline;
 }
 
 .nav {
