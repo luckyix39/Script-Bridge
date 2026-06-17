@@ -41,7 +41,43 @@ def _get_client() -> anthropic.Anthropic:
     return _client
 
 
-def _system_prompt(allow_broad_search: bool) -> str:
+# Intake modes — control how aggressively the assistant asks clarifying questions.
+# Selected from the hidden UX config in the frontend and passed in per request.
+INTAKE_RULES = {
+    # Option 1 — current behaviour.
+    "standard": (
+        "If the user has given very little (e.g. only a name), ask ONE or TWO focused clarifying "
+        "questions first — full name and spelling variants, approximate birth year, places lived, and "
+        "what is already known about their fate. If you already have enough to be useful, produce "
+        "findings even if some details are missing; note what additional detail would help."
+    ),
+    # Option 2 — minimal: only ever ask about dates and locations.
+    "minimal": (
+        "Ask a clarifying question ONLY when you are missing the person's approximate DATES (such as a "
+        "birth year or the period they were active) or their LOCATIONS (places they lived). Do NOT ask "
+        "about anything else — not spelling variants, not their fate, not family relationships. Keep any "
+        "clarifying question to a single short question covering just the missing date(s) and/or "
+        "place(s). As soon as you have at least an approximate date or place to work from, go straight "
+        "to findings. End your findings with a brief closing note telling the user you can give a "
+        "fuller, more confident answer if they share more information — especially additional dates and "
+        "places."
+    ),
+    # Option 3 — answer immediately, then OFFER follow-ups; if the user accepts, act like "standard".
+    "none": (
+        "Do NOT ask any clarifying questions up front. On your FIRST reply, produce findings immediately "
+        "from whatever the user has provided, however sparse. End that first reply with a brief, warm "
+        "closing note: tell the user you may be able to give a better, more complete answer if they "
+        "answer a few short follow-up questions, and ask whether they would like to.\n"
+        "IF, in a later turn, the user agrees to answer follow-up questions (e.g. replies 'ok', 'yes', "
+        "'sure'), THEN switch to the standard intake behaviour: ask ONE or TWO focused clarifying "
+        "questions — full name and spelling variants, approximate birth year, places lived, and what is "
+        "already known about their fate — then produce improved findings from their answers."
+    ),
+}
+
+
+def _system_prompt(allow_broad_search: bool, intake_mode: str = "standard") -> str:
+    intake_rule = INTAKE_RULES.get(intake_mode, INTAKE_RULES["standard"])
     search_rule = (
         "The user has opted in to a BROADER WEB SEARCH. You may use the web_search tool, but "
         "you must still prioritize the curated trusted archives, and you must clearly label any "
@@ -99,10 +135,7 @@ names a town:
 Treat any uncertain identification as an INFERRED statement, never a confirmed one.
 
 WHEN TO ASK vs. ANSWER:
-If the user has given very little (e.g. only a name), ask ONE or TWO focused clarifying questions
-first — full name and spelling variants, approximate birth year, places lived, and what is already
-known about their fate. If you already have enough to be useful, produce findings even if some
-details are missing; note what additional detail would help.
+{intake_rule}
 
 CURATED TRUSTED ARCHIVES (use the bracketed id when citing one):
 {archives_reference_block()}
@@ -197,11 +230,13 @@ def _enrich_archive(archive_id: str) -> dict:
     return {"id": a["id"], "name": a["name"], "url": a["url"]}
 
 
-def run_turn(messages: list, allow_broad_search: bool = False) -> dict:
+def run_turn(messages: list, allow_broad_search: bool = False, intake_mode: str = "standard") -> dict:
     """Run one research turn.
 
     `messages` is the full Anthropic-format conversation passed in by the client
-    (role/content dicts). Returns a dict the frontend can render directly.
+    (role/content dicts). `intake_mode` controls how aggressively the assistant asks
+    clarifying questions ("standard", "minimal", or "none"). Returns a dict the
+    frontend can render directly.
     """
     client = _get_client()
 
@@ -212,7 +247,7 @@ def run_turn(messages: list, allow_broad_search: bool = False) -> dict:
     response = client.messages.create(
         model=MODEL,
         max_tokens=4096,
-        system=_system_prompt(allow_broad_search),
+        system=_system_prompt(allow_broad_search, intake_mode),
         tools=tools,
         messages=messages,
     )

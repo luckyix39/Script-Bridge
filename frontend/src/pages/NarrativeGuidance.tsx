@@ -53,6 +53,30 @@ const TAG_LABEL: Record<string, string> = {
   historical: 'historical',
 }
 
+// --- Secret UX config: how the assistant handles follow-up questions -------
+
+type IntakeMode = 'standard' | 'minimal' | 'none'
+
+const INTAKE_OPTIONS: { value: IntakeMode; label: string; hint: string }[] = [
+  {
+    value: 'standard',
+    label: 'Option 1 — Standard',
+    hint: 'Current behavior: asks one or two focused clarifying questions when little is given.',
+  },
+  {
+    value: 'minimal',
+    label: 'Option 2 — Minimal',
+    hint: 'Only asks about missing dates and locations, then answers. Closes by inviting more detail.',
+  },
+  {
+    value: 'none',
+    label: 'Option 3 — Answer first, then offer',
+    hint: 'Answers immediately with no questions, then offers follow-ups. If you accept, it switches to the standard clarifying flow.',
+  },
+]
+
+const INTAKE_STORAGE_KEY = 'pt_intake_mode'
+
 // --- Markdown helpers ------------------------------------------------------
 
 function mdToSafeHtml(text: string): string {
@@ -79,12 +103,40 @@ export default function NarrativeGuidance() {
   const [broadSearch, setBroadSearch] = useState(false)
   const [busy, setBusy] = useState(false)
 
+  // Secret UX config (toggled with Shift + 0).
+  const [showConfig, setShowConfig] = useState(false)
+  const [intakeMode, setIntakeMode] = useState<IntakeMode>(() => {
+    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(INTAKE_STORAGE_KEY) : null
+    return saved === 'standard' || saved === 'minimal' ? saved : 'none'
+  })
+
   const endRef = useRef<HTMLDivElement>(null)
   const fileRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }, [conversation, busy])
+
+  // Shift + 0 reveals/hides the hidden config panel.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.shiftKey && e.code === 'Digit0') {
+        e.preventDefault()
+        setShowConfig((v) => !v)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  function chooseIntakeMode(mode: IntakeMode) {
+    setIntakeMode(mode)
+    try {
+      localStorage.setItem(INTAKE_STORAGE_KEY, mode)
+    } catch {
+      /* ignore storage failures */
+    }
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -100,7 +152,11 @@ export default function NarrativeGuidance() {
       const res = await fetch('/api/research', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextConversation, allow_broad_search: broadSearch }),
+        body: JSON.stringify({
+          messages: nextConversation,
+          allow_broad_search: broadSearch,
+          intake_mode: intakeMode,
+        }),
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
@@ -239,6 +295,39 @@ export default function NarrativeGuidance() {
 
   return (
     <div className={styles.narrativePage}>
+      {showConfig && (
+        <section className={styles.config} aria-label="Experimental UX configuration">
+          <div className={styles.configHead}>
+            <strong>UX experiment — follow-up questions</strong>
+            <button
+              type="button"
+              className={styles.configClose}
+              onClick={() => setShowConfig(false)}
+              aria-label="Close config"
+            >
+              ✕
+            </button>
+          </div>
+          <p className={styles.configSub}>
+            Controls how the assistant asks clarifying questions. Hidden panel — toggle with Shift + 0.
+          </p>
+          {INTAKE_OPTIONS.map((opt) => (
+            <label key={opt.value} className={styles.configOption}>
+              <input
+                type="radio"
+                name="intakeMode"
+                checked={intakeMode === opt.value}
+                onChange={() => chooseIntakeMode(opt.value)}
+              />
+              <span>
+                <span className={styles.configLabel}>{opt.label}</span>
+                <span className={styles.configHint}>{opt.hint}</span>
+              </span>
+            </label>
+          ))}
+        </section>
+      )}
+
       <section className={styles.intro}>
         <p>
           Describe the person you would like to learn about — in your own words. Include whatever you

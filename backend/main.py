@@ -201,6 +201,7 @@ class Message(BaseModel):
 class ResearchRequest(BaseModel):
     messages: list[Message]
     allow_broad_search: bool = False
+    intake_mode: str = "none"
 
 
 @app.post("/research")
@@ -209,7 +210,7 @@ async def research(req: ResearchRequest):
         raise HTTPException(status_code=422, detail="messages is required.")
     conversation = [{"role": m.role, "content": m.content} for m in req.messages]
     try:
-        return narrative_service.run_turn(conversation, req.allow_broad_search)
+        return narrative_service.run_turn(conversation, req.allow_broad_search, req.intake_mode)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc))
     except Exception as exc:
