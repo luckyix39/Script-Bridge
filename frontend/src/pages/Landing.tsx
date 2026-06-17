@@ -26,8 +26,9 @@ export default function Landing({ onNavigate }: Props) {
       <section className={styles.section}>
         <h2 className={styles.h}>The Problem</h2>
         <p>
-           It is a race against time to answer important, lingering questions about the Holocaust as survivors with firsthand 
-          knowledge are reaching their final years. Although general events and locations are 
+           As survivors with firsthand 
+          knowledge are reaching their final years, it is a race against time to answer important, lingering questions about the Holocaust. 
+          For example, although general events and locations are 
           well-documented, details about many specific individuals 
           remains buried underneath mountains of confusing documentation systems, 
           sometimes written in different languages, which leaves too many significant questions unanswered. 
