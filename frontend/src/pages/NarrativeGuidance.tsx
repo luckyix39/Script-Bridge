@@ -116,6 +116,7 @@ export default function NarrativeGuidance() {
   const endRef = useRef<HTMLDivElement>(null)
   const fileRef = useRef<HTMLInputElement>(null)
   const configRef = useRef<HTMLElement>(null)
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
@@ -138,6 +139,11 @@ export default function NarrativeGuidance() {
   useEffect(() => {
     if (showConfig) configRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }, [showConfig])
+
+  // When findings arrive, scroll the summary into view — it can render below the fold.
+  useEffect(() => {
+    if (lastResult) resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [lastResult])
 
   function chooseIntakeMode(mode: IntakeMode) {
     setIntakeMode(mode)
@@ -406,7 +412,11 @@ export default function NarrativeGuidance() {
         </div>
       </form>
 
-      {lastResult && <Results data={lastResult} />}
+      {lastResult && (
+        <div ref={resultsRef}>
+          <Results data={lastResult} />
+        </div>
+      )}
 
       <div className={styles.sessionActions}>
         {/* Save / resume hidden for now */}

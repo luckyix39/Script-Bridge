@@ -218,8 +218,14 @@
 .narrative {
   color: var(--text);
 }
+.narrative :global(p) {
+  margin: 0 0 1.1em;
+}
 .narrative p:first-child {
   margin-top: 0;
+}
+.narrative :global(p:last-child) {
+  margin-bottom: 0;
 }
 .narrative :global(h2),
 .narrative :global(h3),
