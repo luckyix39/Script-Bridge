@@ -127,7 +127,7 @@
 }
 .composer textarea {
   width: 100%;
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1rem;
   padding: 14px 16px;
   border: 1px solid var(--border);

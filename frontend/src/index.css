@@ -30,7 +30,7 @@
 }
 
 body {
-  font-family: var(--sans);
+  font-family: var(--serif);
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 button {
-  font-family: inherit;
+  font-family: var(--sans);
   cursor: pointer;
   border: none;
   outline: none;
