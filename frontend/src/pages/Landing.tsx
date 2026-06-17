@@ -59,11 +59,12 @@ export default function Landing({ onNavigate }: Props) {
           </span>
           <span className={styles.cardBody}>
             Ai-Assisted Narrative Guidance to Holocaust Databases speeds-up focused research by:
-           i) First you type any information you might know about an individual research subject 
-            ii) Then, based upon that information, Peace Together provides a hypothetical narrative with links to databases to guide your research step-by-step through the major Holocaust databases. 
+           i) First, you type any information you might know about an individual research subject 
+            ii) Then, based upon that information, the Ai assistant provides a hypothetical narrative with links to databases to guide your focused research
+            step-by-step through the major Holocaust databases. 
             
           </span>
-          <span className={styles.cardCta}>Start researching</span>
+          <span className={styles.cardCta}>Start researching with Narrative Guidance to Holocaust Databases</span>
         </button>
 
         <button className={styles.card} onClick={() => onNavigate('ipa')}>
@@ -80,7 +81,7 @@ export default function Landing({ onNavigate }: Props) {
             <span>ii. Document Reader</span>
             <span>iii. Sütterlin Script Translation</span>
           </span>
-          <span className={styles.cardCta}>Open the tools</span>
+          <span className={styles.cardCta}>Start researching with Language Parsing</span>
         </button>
       </div>
 
