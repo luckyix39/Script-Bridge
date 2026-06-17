@@ -337,8 +337,7 @@ export default function NarrativeGuidance() {
           records worth searching.
         </p>
         <p className={styles.privacyNote}>
-          <strong>We store nothing.</strong> Nothing you type is saved on our servers. To continue
-          later, use <em>Save research</em> to download your session and re-upload it to resume.
+          <strong>We store nothing.</strong> Nothing you type is saved on our servers.
         </p>
       </section>
 
@@ -397,19 +396,24 @@ export default function NarrativeGuidance() {
       {lastResult && <Results data={lastResult} />}
 
       <div className={styles.sessionActions}>
-        <button type="button" onClick={saveResearch}>
-          Save research
-        </button>
-        <label className={styles.filebtn}>
-          Resume saved research
-          <input
-            ref={fileRef}
-            type="file"
-            accept="application/json"
-            hidden
-            onChange={loadResearch}
-          />
-        </label>
+        {/* Save / resume hidden for now */}
+        {false && (
+          <>
+            <button type="button" onClick={saveResearch}>
+              Save research
+            </button>
+            <label className={styles.filebtn}>
+              Resume saved research
+              <input
+                ref={fileRef}
+                type="file"
+                accept="application/json"
+                hidden
+                onChange={loadResearch}
+              />
+            </label>
+          </>
+        )}
         {lastResult && (
           <button type="button" onClick={downloadPdf}>
             Download PDF report
