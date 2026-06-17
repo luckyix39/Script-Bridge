@@ -115,15 +115,17 @@ export default function NarrativeGuidance() {
 
   const endRef = useRef<HTMLDivElement>(null)
   const fileRef = useRef<HTMLInputElement>(null)
+  const configRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }, [conversation, busy])
 
-  // Shift + 0 reveals/hides the hidden config panel.
+  // Shift + 0 reveals/hides the hidden config panel. Accept the physical "0" key
+  // (Shift+Digit0) as well as the resulting ")" character across layouts.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
-      if (e.shiftKey && e.code === 'Digit0') {
+      if ((e.shiftKey && e.code === 'Digit0') || e.key === ')') {
         e.preventDefault()
         setShowConfig((v) => !v)
       }
@@ -131,6 +133,11 @@ export default function NarrativeGuidance() {
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
+
+  // When the panel opens, bring it into view (it sits at the top of the page).
+  useEffect(() => {
+    if (showConfig) configRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [showConfig])
 
   function chooseIntakeMode(mode: IntakeMode) {
     setIntakeMode(mode)
@@ -300,7 +307,7 @@ export default function NarrativeGuidance() {
   return (
     <div className={styles.narrativePage}>
       {showConfig && (
-        <section className={styles.config} aria-label="Experimental UX configuration">
+        <section ref={configRef} className={styles.config} aria-label="Experimental UX configuration">
           <div className={styles.configHead}>
             <strong>UX experiment — follow-up questions</strong>
             <button

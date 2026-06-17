@@ -61,7 +61,7 @@ export default function Landing({ onNavigate }: Props) {
             hypothetical narrative to guide you step-by-step through the major
             Holocaust databases. This speeds up focused research.
           </span>
-          <span className={styles.cardCta}>Start researching →</span>
+          <span className={styles.cardCta}>Start researching</span>
         </button>
 
         <button className={styles.card} onClick={() => onNavigate('ipa')}>
@@ -78,7 +78,7 @@ export default function Landing({ onNavigate }: Props) {
             <span>ii. Document Reader</span>
             <span>iii. Sütterlin Script Translation Chart</span>
           </span>
-          <span className={styles.cardCta}>Open the tools →</span>
+          <span className={styles.cardCta}>Open the tools</span>
         </button>
       </div>
 

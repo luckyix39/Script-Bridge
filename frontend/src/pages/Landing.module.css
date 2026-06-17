@@ -22,7 +22,7 @@
 
 .h {
   font-family: var(--serif);
-  font-size: 0.8rem;
+  font-size: 1.125rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -36,7 +36,6 @@
 
 .subtle {
   color: var(--text-muted);
-  font-style: italic;
 }
 
 .cards {
@@ -71,7 +70,7 @@
 }
 
 .cardNum {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
