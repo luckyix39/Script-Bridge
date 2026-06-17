@@ -44,6 +44,9 @@ type ResearchResponse = ResultData | ClarifyData
 interface ChatMessage {
   role: 'user' | 'assistant'
   content: string
+  // Kept in the conversation for backend context, but not shown as a chat bubble
+  // (e.g. a result narrative, which is rendered in the Summary section instead).
+  hidden?: boolean
 }
 
 const TAG_LABEL: Record<string, string> = {
@@ -153,7 +156,7 @@ export default function NarrativeGuidance() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: nextConversation,
+          messages: nextConversation.map(({ role, content }) => ({ role, content })),
           allow_broad_search: broadSearch,
           intake_mode: intakeMode,
         }),
@@ -168,8 +171,9 @@ export default function NarrativeGuidance() {
         setConversation([...nextConversation, { role: 'assistant', content: data.message }])
       } else {
         setLastResult(data)
-        // Keep a compact assistant turn so follow-ups have context.
-        setConversation([...nextConversation, { role: 'assistant', content: data.narrative }])
+        // Keep a compact assistant turn so follow-ups have context, but don't show it
+        // as a chat bubble — it's rendered in the Summary section below instead.
+        setConversation([...nextConversation, { role: 'assistant', content: data.narrative, hidden: true }])
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'An unknown error occurred.'
@@ -342,16 +346,18 @@ export default function NarrativeGuidance() {
       </section>
 
       <section className={styles.conversation} aria-live="polite">
-        {conversation.map((m, i) => (
-          <div key={i} className={`${styles.bubble} ${m.role === 'user' ? styles.user : styles.assistant}`}>
-            <div className={styles.who}>{m.role === 'user' ? 'You' : 'Assistant'}</div>
-            {m.role === 'assistant' ? (
-              <div dangerouslySetInnerHTML={{ __html: mdToSafeHtml(m.content) }} />
-            ) : (
-              <div>{m.content}</div>
-            )}
-          </div>
-        ))}
+        {conversation.map((m, i) =>
+          m.hidden ? null : (
+            <div key={i} className={`${styles.bubble} ${m.role === 'user' ? styles.user : styles.assistant}`}>
+              <div className={styles.who}>{m.role === 'user' ? 'You' : 'Assistant'}</div>
+              {m.role === 'assistant' ? (
+                <div dangerouslySetInnerHTML={{ __html: mdToSafeHtml(m.content) }} />
+              ) : (
+                <div>{m.content}</div>
+              )}
+            </div>
+          )
+        )}
         {busy && (
           <div className={`${styles.bubble} ${styles.assistant}`}>
             <div className={styles.who}>Assistant</div>
