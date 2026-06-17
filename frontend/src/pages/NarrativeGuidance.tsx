@@ -347,11 +347,11 @@ export default function NarrativeGuidance() {
 
       <section className={styles.intro}>
         <p>
-          Describe the person you would like to learn about — in your own words. Include whatever you
-          know: their name and any spelling variations, when and where they were born, places they
-          lived, and what you know of their fate. The assistant will ask a question or two if it needs
-          more, then gather what it can from trusted Holocaust archives and point you toward the
-          records worth searching.
+          Step 1) Please provide any information about the person you would like to learn about. Include whatever you
+          might know such as their name, any spelling variations, when and where they were born, places they
+          lived, and what you know of their fate. 
+          Step 2) Based upon the information provided, the assistant will provide Holocaust-related historical context and related 
+          Holocaust databases to help you search for specific records.
         </p>
         <p className={styles.privacyNote}>
           <strong>We store nothing.</strong> Nothing you type is saved on our servers.
@@ -389,7 +389,7 @@ export default function NarrativeGuidance() {
           rows={3}
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="e.g. I'd like to learn about my grandmother. Her name was Jane Dow, born around 1910 in …, she lived in Paris from about 1935, and I believe she died at Auschwitz."
+          placeholder="e.g. I'd like to learn about my grandmother. Her name was Klara Schwarcz, born around 1910 in …, she lived in Paris from about 1935, and I believe she died at Auschwitz."
         />
         <div className={styles.composerRow}>
           <label className={styles.broadSearch}>
