@@ -29,8 +29,8 @@ export default function Landing({ onNavigate }: Props) {
            Although general Holocaust events and locations are 
           well-documented, details about many specific individuals 
           remains buried underneath mountains of confusing documentation systems, 
-          sometimes written in different languages which leaves many important questions unanswered. 
-          Further, it is a race against time as Holocaust survivors with firsthand 
+          sometimes written in different languages, which leaves many important questions unanswered. 
+          Further, it is a race against time to answer these important lingering questions as Holocaust survivors with firsthand 
           knowledge are reaching their final years.
    
         </p>
