@@ -18,7 +18,7 @@ Describe a relative in plain language and an AI research assistant (powered by [
 - **Honest, tagged findings** — every statement is marked `confirmed` (an actual record or established fact), `inferred` (historically likely but not a found record), `next_step` (a concrete place to look), or `historical` (general WWII/Holocaust context). The assistant never fabricates records and never invents precise convoy, transport, document, or prisoner numbers
 - **Personal + historical timeline** — interleaves the person's life events with the historical events that shaped them, each linked to relevant archives
 - **Curated archive routing** — points you to specific trusted archives (Yad Vashem, Arolsen, USHMM, EHRI, JewishGen, Mémorial de la Shoah, and more), listing free archives first, with help on shifting Central/Eastern European place names and borders
-- **Private by design** — nothing is stored server-side; download your session as JSON to resume later, or export a PDF report
+- **Private by design** — nothing is stored server-side; export a PDF report of your findings
 
 ### Approach Two — Language Parsing
 
@@ -42,6 +42,13 @@ Takes spoken audio, typed text, or a photo of a historical document and helps yo
 **Narrative Guidance:**
 
 The full conversation is sent to the `/research` endpoint each turn (nothing is persisted server-side). Claude (`claude-sonnet-4-6`) is given the curated archive list, region/theme routing, and a seed timeline, then returns either a clarifying question or structured findings — a narrative, a tagged timeline, and archive pointers — which the browser renders and can export to PDF.
+
+## Hidden / Work-in-Progress Features
+
+These are fully built and wired in the code but intentionally hidden in the UI for now, so they aren't lost track of:
+
+- **Save & resume sessions** — *Save research* downloads the current session as a JSON file, and *Resume saved research* re-uploads it to continue later (no server storage involved). The buttons are currently hidden in `frontend/src/pages/NarrativeGuidance.tsx` (wrapped in a `{false && …}` block); the `saveResearch` / `loadResearch` handlers remain intact. Un-hide by removing that guard.
+- **Experimental intake-mode config** — a hidden panel on the Narrative Guidance page, toggled with **Shift + 0**, lets you choose how the assistant asks follow-up questions: *Standard* (one or two clarifying questions), *Minimal* (only dates and locations), or *Answer first, then offer* (answers immediately, then offers follow-ups and switches to the standard flow if accepted). The choice is stored in the browser and sent to `/research` as `intake_mode`; the default is *Answer first, then offer*.
 
 ## Prerequisites
 
