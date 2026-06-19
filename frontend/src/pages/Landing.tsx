@@ -40,7 +40,7 @@ export default function Landing({ onNavigate }: Props) {
       <section className={styles.section}>
         <h2 className={styles.h}>The Solution</h2>
         <p>
-          Peace Together harnesses artificial intelligence to retrace and parse through the mountain of 
+          Peace Together harnesses artificial intelligence to trace and parse through the mountain of 
           documentation in order to expedite focused research 
           and provide actionable next steps towards finding detailed answers. Peace Together tools are completely free of charge.         </p>
         <p className={styles.subtle}>
