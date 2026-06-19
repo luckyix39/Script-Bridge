@@ -18,7 +18,7 @@ export default function Landing({ onNavigate }: Props) {
           
           Peace Together (PT) aims to assist heirs and 
           any researcher (even those without historical knowledge) 
-          to find and to execute focused research within historical 
+          to find and to execute focused research on specific individuals within historical 
           Holocaust databases. There is no charge to use the Peace Together tools.
         </p>
       </section>
@@ -71,7 +71,7 @@ export default function Landing({ onNavigate }: Props) {
           <span className={styles.cardNum}>Approach Two</span>
           <span className={styles.cardTitle}>Language Parsing</span>
           <span className={styles.cardBody}>
-            The Language Parsing tools speeds up comprehension and opens
+            The Language Parsing tools speeds-up comprehension and opens
             new areas of research. It is completely free to use. The tools provide translating, transcribing, analyzing and
             expansion options specific to common Holocaust-related languages —
             especially Sütterlin script. There are three Language Parsing services:
@@ -85,7 +85,7 @@ export default function Landing({ onNavigate }: Props) {
         </button>
       </div>
 
-      <p className={styles.closing}>Peace Together. Harnessing the speed and power of artificial intelligence to retrace each individual story depicting the Holocaust. </p>
+      <p className={styles.closing}>Peace Together. Harnessing the speed and power of artificial intelligence to trace each individual story depicting the Holocaust. </p>
     </div>
   )
 }
