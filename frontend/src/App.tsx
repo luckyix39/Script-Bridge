@@ -103,7 +103,7 @@ export default function App() {
           </button>
         </h1>
         <p className={styles.subtitle}>
-          Harnessing the speed &amp; power of Artificial Intelligence to trace
+          Harnessing the speed &amp; power of artificial intelligence to trace
           each individual story depicting the Holocaust.
         </p>
       </header>
