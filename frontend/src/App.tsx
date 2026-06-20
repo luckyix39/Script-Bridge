@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import type { AppAction, AppState, TranscribeResponse } from './types'
 import FileUpload from './components/FileUpload'
 import MicRecorder from './components/MicRecorder'
@@ -11,6 +11,25 @@ import SuttterlinReader from './pages/SuttterlinReader'
 import Landing from './pages/Landing'
 import NarrativeGuidance from './pages/NarrativeGuidance'
 import styles from './App.module.css'
+
+// GoatCounter is loaded via a script tag in index.html.
+declare global {
+  interface Window {
+    goatcounter?: {
+      count: (vars: { path?: string; title?: string; event?: boolean }) => void
+    }
+  }
+}
+
+// Virtual paths/titles for each in-app view, so GoatCounter records per-tool views
+// even though the SPA never changes the real URL.
+const PAGE_ANALYTICS: Record<Page, { path: string; title: string }> = {
+  home: { path: '/', title: 'Home' },
+  narrative: { path: '/narrative', title: 'Narrative Guidance' },
+  ipa: { path: '/language/audio-ipa', title: 'Audio to IPA' },
+  document: { path: '/language/document-reader', title: 'Document Reader' },
+  sutterlin: { path: '/language/sutterlin', title: 'Sütterlin Decoder' },
+}
 
 const initialState: AppState = {
   status: 'idle',
@@ -38,6 +57,18 @@ function reducer(state: AppState, action: AppAction): AppState {
 export default function App() {
   const [page, setPage] = useState<Page>('home')
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  // Record a per-tool pageview on in-app navigation. The initial load is already
+  // counted automatically by GoatCounter's script, so skip the first render.
+  const firstRender = useRef(true)
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    const meta = PAGE_ANALYTICS[page]
+    window.goatcounter?.count({ path: meta.path, title: meta.title })
+  }, [page])
 
   async function processFile(file: File) {
     dispatch({ type: 'START_PROCESSING' })
