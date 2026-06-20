@@ -16,7 +16,7 @@ export default function Landing({ onNavigate }: Props) {
         <h2 className={styles.h}>Mission</h2>
         <p>
           
-          Peace Together (PT) aims to assist heirs and 
+          Peace Together (PT) assists  
           any researcher (even those without historical knowledge) 
           to find and to execute focused research on specific individuals within historical 
           Holocaust databases. There is no charge to use the Peace Together tools.
@@ -28,7 +28,7 @@ export default function Landing({ onNavigate }: Props) {
         <p>
            As survivors with firsthand 
           knowledge are reaching their final years, it is a race against time to answer important, lingering questions about the Holocaust. 
-          For example, although general events and locations are 
+          Although general events and locations are 
           well-documented, details about many specific individuals 
           remains buried underneath mountains of confusing documentation systems, 
           sometimes written in different languages, which leaves too many significant questions unanswered. 
@@ -40,9 +40,9 @@ export default function Landing({ onNavigate }: Props) {
       <section className={styles.section}>
         <h2 className={styles.h}>The Solution</h2>
         <p>
-          Peace Together harnesses artificial intelligence to trace and parse through the mountain of 
-          documentation in order to expedite focused research 
-          and provide actionable next steps towards finding detailed answers. Peace Together tools are completely free of charge.         </p>
+          Peace Together harnesses artificial intelligence to parse through the mountain of 
+          documentation and synthesize seemingly disparate information in order to expedite focused research 
+          and provide actionable next steps to find detailed answers.  Peace Together tools are completely free of charge.         </p>
         <p className={styles.subtle}>
           Peace Together offers two main search approaches — choose one to begin:
         </p>
