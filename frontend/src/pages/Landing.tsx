@@ -58,9 +58,9 @@ export default function Landing({ onNavigate }: Props) {
             Narrative Guidance to Holocaust Databases
           </span>
           <span className={styles.cardBody}>
-            The Ai-Assisted Narrative Guidance to Holocaust Databases tool speeds-up focused research. It is completely free to use. To use the tool you:
+            The Narrative Guidance to Holocaust Databases tool speeds-up focused research. It is completely free to use. To use the tool you:
            i) First, you type any information you might know about an individual research subject 
-            ii) Then, based upon that information, the Ai-assistant provides a hypothetical narrative with links to databases to guide your focused research
+            ii) Then, based upon that information, the ai-assistant provides a hypothetical narrative with links to databases to guide your focused research
             step-by-step through the major Holocaust databases. 
             
           </span>
@@ -74,7 +74,7 @@ export default function Landing({ onNavigate }: Props) {
             The Language Parsing tools speeds-up comprehension and opens
             new areas of research. It is completely free to use. The tools provide translating, transcribing, analyzing and
             expansion options specific to common Holocaust-related languages —
-            including Sütterlin script which is the handwritten German language used during the Holocaust. There are three Language Parsing services:
+            including Sütterlin Script which is the handwritten German language used during the Holocaust. There are three Language Parsing services:
           </span>
           <span className={styles.cardList}>
             <span>i. Audio to IPA (International Phonetic Alphabet)</span>
