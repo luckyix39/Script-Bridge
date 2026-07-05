@@ -130,7 +130,7 @@ export default function App() {
             onClick={() => setPage('home')}
             aria-label="Peace Together — return home"
           >
-            Peace Together
+            Peace Together <small>[BETA]</small>
           </button>
         </h1>
         <p className={styles.subtitle}>
