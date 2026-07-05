@@ -8,9 +8,7 @@ interface Props {
 export default function Landing({ onNavigate }: Props) {
   return (
     <div className={styles.landing}>
-      <p className={styles.lede}>
-        This site is under construction.
-      </p>
+     
 
       <section className={styles.section}>
         <h2 className={styles.h}>Mission</h2>
