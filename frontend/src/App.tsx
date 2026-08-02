@@ -5,6 +5,7 @@ import MicRecorder from './components/MicRecorder'
 import TextInput from './components/TextInput'
 import IPADisplay from './components/IPADisplay'
 import Nav from './components/Nav'
+import ptLogo from './assets/PT_Logo.svg'
 import type { Page } from './components/Nav'
 import DocumentReader from './pages/DocumentReader'
 import SuttterlinReader from './pages/SuttterlinReader'
@@ -130,6 +131,7 @@ export default function App() {
             onClick={() => setPage('home')}
             aria-label="Peace Together — return home"
           >
+            <img src={ptLogo} alt="" className={styles.titleIcon} />
             Peace Together <small>[BETA]</small>
           </button>
         </h1>
