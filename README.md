@@ -28,6 +28,7 @@ Takes spoken audio, typed text, or a photo of a historical document and helps yo
 - **Spelling variants** — shows how a name or word would be written across dozens of languages and writing systems, powered by Claude AI
 - **Document reader** — extracts, transcribes, and translates scanned or photographed WWII-era German documents, cross-referenced against a 4,300+ entry ITS archive glossary
 - **Sütterlin decoder** — reads the old German cursive script common in 19th and early 20th century records
+- **Google Translate** — a quick link out to Google Translate for general-purpose translation beyond names and Sütterlin script
 
 ## How It Works
 
@@ -168,7 +169,8 @@ Script-Bridge/
 │   │   │   ├── Landing.tsx           # Mission + two-approach landing page
 │   │   │   ├── NarrativeGuidance.tsx # Research chat, findings, PDF, save/resume
 │   │   │   ├── DocumentReader.tsx
-│   │   │   └── SuttterlinReader.tsx
+│   │   │   ├── SuttterlinReader.tsx
+│   │   │   └── GoogleTranslate.tsx
 │   │   └── components/
 │   │       ├── FileUpload.tsx
 │   │       ├── MicRecorder.tsx

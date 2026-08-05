@@ -1,8 +1,8 @@
 import styles from './Nav.module.css'
 
-export type Page = 'home' | 'narrative' | 'ipa' | 'document' | 'sutterlin'
+export type Page = 'home' | 'narrative' | 'ipa' | 'document' | 'sutterlin' | 'translate'
 
-const LANGUAGE_PAGES: Page[] = ['ipa', 'document', 'sutterlin']
+const LANGUAGE_PAGES: Page[] = ['ipa', 'document', 'sutterlin', 'translate']
 
 interface Props {
   activePage: Page
@@ -40,6 +40,12 @@ export default function Nav({ activePage, onNavigate }: Props) {
             onClick={() => onNavigate('sutterlin')}
           >
             Sütterlin Script
+          </button>
+          <button
+            className={`${styles.tab} ${activePage === 'translate' ? styles.active : ''}`}
+            onClick={() => onNavigate('translate')}
+          >
+            Google Translate
           </button>
         </nav>
       )}

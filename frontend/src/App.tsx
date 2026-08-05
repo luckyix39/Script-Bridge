@@ -9,6 +9,7 @@ import ptLogo from './assets/PT_Logo.svg'
 import type { Page } from './components/Nav'
 import DocumentReader from './pages/DocumentReader'
 import SuttterlinReader from './pages/SuttterlinReader'
+import GoogleTranslate from './pages/GoogleTranslate'
 import Landing from './pages/Landing'
 import NarrativeGuidance from './pages/NarrativeGuidance'
 import styles from './App.module.css'
@@ -30,6 +31,7 @@ const PAGE_ANALYTICS: Record<Page, { path: string; title: string }> = {
   ipa: { path: '/language/audio-ipa', title: 'Audio to IPA' },
   document: { path: '/language/document-reader', title: 'Document Reader' },
   sutterlin: { path: '/language/sutterlin', title: 'Sütterlin Decoder' },
+  translate: { path: '/language/google-translate', title: 'Google Translate' },
 }
 
 const initialState: AppState = {
@@ -152,6 +154,8 @@ export default function App() {
           <DocumentReader />
         ) : page === 'sutterlin' ? (
           <SuttterlinReader />
+        ) : page === 'translate' ? (
+          <GoogleTranslate />
         ) : (
           <>
             <section className={styles.inputSection}>

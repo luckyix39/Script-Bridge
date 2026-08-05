@@ -72,12 +72,13 @@ export default function Landing({ onNavigate }: Props) {
             The Language Parsing tools speeds-up comprehension and opens
             new areas of research. It is completely free to use. The tools provide translating, transcribing, analyzing and
             expansion options specific to common Holocaust-related languages —
-            including Sütterlin Script which is the handwritten German language used during the Holocaust. There are three Language Parsing services:
+            including Sütterlin Script which is the handwritten German language used during the Holocaust. There are four Language Parsing services:
           </span>
           <span className={styles.cardList}>
             <span>i. Audio to IPA (International Phonetic Alphabet)</span>
             <span>ii. Document Reader</span>
             <span>iii. Sütterlin Script Translation</span>
+            <span>iv. Google Translate</span>
           </span>
           <span className={styles.cardCta}>Click this button to take you to the page with the Language Parsing tools</span>
         </button>
