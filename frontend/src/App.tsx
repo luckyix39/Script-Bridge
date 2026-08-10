@@ -134,7 +134,7 @@ export default function App() {
             aria-label="Peace Together — return home"
           >
             <img src={ptLogo} alt="" className={styles.titleIcon} />
-            Peace Together <small>[BETA]</small>
+            Peace Together
           </button>
         </h1>
         <p className={styles.subtitle}>
