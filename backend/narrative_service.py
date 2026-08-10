@@ -114,6 +114,16 @@ Every set of findings must include a caveats note. State plainly what is uncerta
 inference rather than confirmed record, and what additional detail from the user would most improve
 the search. Never leave this empty.
 
+CONFIDENCE SCORES:
+Give every timeline event AND every archive pointer a confidence score from 0-100, your honest estimate
+that the statement (or, for an archive pointer, that searching there will actually turn up something
+for this specific person) holds up. These are independent of the confirmed/inferred/next_step/historical
+tag, not a restatement of it — two "inferred" events can have very different confidence (e.g. 75 vs. 35)
+depending on how strong the historical pattern is. As a rough guide: confirmed facts usually sit high
+(85-100); inferred statements vary with how strong the pattern is (30-80); next_step and historical
+entries reflect your confidence that the suggestion/context is actually relevant to this person's case
+rather than generic. Never default to a round number out of laziness — vary it honestly.
+
 {search_rule}
 
 PREFER FREE ARCHIVES:
@@ -191,13 +201,17 @@ TOOLS = [
                                 "enum": ["confirmed", "inferred", "next_step", "historical"],
                                 "description": "confirmed=found record/fact; inferred=likely but unverified; next_step=where to look; historical=general WWII/Holocaust context event.",
                             },
+                            "confidence": {
+                                "type": "integer",
+                                "description": "0-100 honest confidence that this event holds up, independent of (not a restatement of) the kind tag.",
+                            },
                             "archive_ids": {
                                 "type": "array",
                                 "items": {"type": "string"},
                                 "description": "ids of curated archives relevant to this event.",
                             },
                         },
-                        "required": ["date", "title", "description", "kind"],
+                        "required": ["date", "title", "description", "kind", "confidence"],
                     },
                 },
                 "archive_pointers": {
@@ -208,8 +222,12 @@ TOOLS = [
                         "properties": {
                             "archive_id": {"type": "string"},
                             "why": {"type": "string", "description": "Why this archive is relevant and what to search for."},
+                            "confidence": {
+                                "type": "integer",
+                                "description": "0-100 honest confidence that searching this archive will turn up something for this specific person.",
+                            },
                         },
-                        "required": ["archive_id", "why"],
+                        "required": ["archive_id", "why", "confidence"],
                     },
                 },
                 "caveats": {
@@ -262,6 +280,10 @@ def run_turn(messages: list, allow_broad_search: bool = False, intake_mode: str 
                 ev["archives"] = [_enrich_archive(i) for i in ev.get("archive_ids", [])]
             for p in data.get("archive_pointers", []):
                 p["archive"] = _enrich_archive(p["archive_id"])
+            # Highest-confidence "where to look next" suggestion first.
+            data["archive_pointers"] = sorted(
+                data.get("archive_pointers", []), key=lambda p: p.get("confidence", 0), reverse=True
+            )
             return {"mode": "result", **data}
 
     # Fallback: the model replied in plain text without a tool. Treat as a clarifying message.

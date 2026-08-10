@@ -17,12 +17,14 @@ interface TimelineEvent {
   title: string
   description: string
   kind?: string
+  confidence?: number
   archives?: ArchiveRef[]
 }
 
 interface ArchivePointer {
   archive_id: string
   why: string
+  confidence?: number
   archive?: ArchiveRef
 }
 
@@ -54,6 +56,13 @@ const TAG_LABEL: Record<string, string> = {
   inferred: 'inferred',
   next_step: 'next step',
   historical: 'historical',
+}
+
+function confidenceClass(confidence?: number): string {
+  if (confidence == null) return ''
+  if (confidence >= 70) return 'confHigh'
+  if (confidence >= 40) return 'confMedium'
+  return 'confLow'
 }
 
 // --- Secret UX config: how the assistant handles follow-up questions -------
@@ -275,7 +284,8 @@ export default function NarrativeGuidance() {
     if (lastResult.timeline?.length) {
       line('Timeline', { size: 14, font: 'times', style: 'bold' })
       lastResult.timeline.forEach((ev) => {
-        line(`${ev.date} — ${ev.title}  [${TAG_LABEL[ev.kind || 'historical'] || 'historical'}]`, {
+        const conf = ev.confidence != null ? `, ${ev.confidence}% confidence` : ''
+        line(`${ev.date} — ${ev.title}  [${TAG_LABEL[ev.kind || 'historical'] || 'historical'}${conf}]`, {
           style: 'bold',
           gap: 1,
         })
@@ -295,7 +305,8 @@ export default function NarrativeGuidance() {
       line('Where to research next', { size: 14, font: 'times', style: 'bold' })
       lastResult.archive_pointers.forEach((p) => {
         const a = p.archive || ({} as ArchiveRef)
-        line(`${a.name || p.archive_id} — ${a.url || ''}`, { style: 'bold', gap: 1 })
+        const conf = p.confidence != null ? `  [${p.confidence}% confidence]` : ''
+        line(`${a.name || p.archive_id} — ${a.url || ''}${conf}`, { style: 'bold', gap: 1 })
         line(p.why, { gap: 8 })
       })
     }
@@ -455,7 +466,26 @@ function Tag({ kind }: { kind?: string }) {
   return <span className={`${styles.tag} ${styles['tag_' + cls]}`}>{TAG_LABEL[kind || 'historical'] || 'historical'}</span>
 }
 
+function ConfidenceBadge({ confidence }: { confidence?: number }) {
+  if (confidence == null) return null
+  return (
+    <span className={`${styles.confidence} ${styles[confidenceClass(confidence)]}`}>
+      {confidence}% confidence
+    </span>
+  )
+}
+
+type TimelineSort = 'chronological' | 'confidence'
+
 function Results({ data }: { data: ResultData }) {
+  const [timelineSort, setTimelineSort] = useState<TimelineSort>('chronological')
+
+  const sortedTimeline = data.timeline
+    ? timelineSort === 'confidence'
+      ? [...data.timeline].sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0))
+      : data.timeline
+    : []
+
   return (
     <div className={styles.results}>
       <h2 className={styles.resultsH}>Summary</h2>
@@ -463,15 +493,34 @@ function Results({ data }: { data: ResultData }) {
 
       {!!data.timeline?.length && (
         <>
-          <h2 className={styles.resultsH}>Timeline</h2>
+          <div className={styles.timelineHeader}>
+            <h2 className={styles.resultsH}>Timeline</h2>
+            <div className={styles.sortToggle} role="group" aria-label="Sort timeline">
+              <button
+                type="button"
+                className={timelineSort === 'chronological' ? styles.sortActive : ''}
+                onClick={() => setTimelineSort('chronological')}
+              >
+                Chronological
+              </button>
+              <button
+                type="button"
+                className={timelineSort === 'confidence' ? styles.sortActive : ''}
+                onClick={() => setTimelineSort('confidence')}
+              >
+                By confidence
+              </button>
+            </div>
+          </div>
           <ul className={styles.timeline}>
-            {data.timeline.map((ev, i) => (
+            {sortedTimeline.map((ev, i) => (
               <li key={i}>
                 <span className={`${styles.dot} ${styles['dot_' + (ev.kind || 'historical')]}`} />
                 <div>
                   <span className={styles.date}>{ev.date}</span>
                   <span className={styles.evTitle}>{ev.title} </span>
                   <Tag kind={ev.kind} />
+                  <ConfidenceBadge confidence={ev.confidence} />
                 </div>
                 <div className={styles.evDesc}>{ev.description}</div>
                 {!!ev.archives?.length && (
@@ -512,6 +561,7 @@ function Results({ data }: { data: ResultData }) {
                   ) : (
                     <strong>{a.name || p.archive_id}</strong>
                   )}
+                  <ConfidenceBadge confidence={p.confidence} />
                   <div className={styles.why}>{p.why}</div>
                 </li>
               )
